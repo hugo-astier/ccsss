@@ -1,0 +1,23 @@
+{
+  "name": "ccsss",
+  "version": "1.0.0",
+  "description": "Critical-path CSS Service",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "critical",
+    "path",
+    "css"
+  ],
+  "author": "Nicolas Grisey Demengel <nicolas.demengel@gmail.com> (http://demengel.net)",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ndemengel/ccsss.git"
+  },
+  "dependencies": {
+    "clean-css": "3.4.10",
+    "penthouse": "0.9.1"
+  }
+}
