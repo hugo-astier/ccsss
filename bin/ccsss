@@ -1,6 +1,21 @@
 #!/usr/bin/env node
 'use strict';
 
+let args = process.argv.slice(2);
+let port = 8888;
+if (args.length) {
+    if (args.length !== 2 || ['-p', '--port'].indexOf(args[0]) === -1) {
+        console.error('Usage: ccsss [--port NUMBER]');
+        return process.exit(1);
+    }
+
+    port = parseInt(args[1], 10);
+    if (isNaN(port)) {
+        console.error('Usage: ccsss [--port NUMBER]');
+        return process.exit(1);
+    }
+}
+
 process.on('uncaughtException', err => {
     console.error((new Date).toUTCString() + ' uncaughtException:', err.message);
     console.error(err.stack);
@@ -8,4 +23,4 @@ process.on('uncaughtException', err => {
 
 const server = require('../lib/server');
 
-server.start(8888);
+server.start(port);
