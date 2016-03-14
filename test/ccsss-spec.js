@@ -140,4 +140,18 @@ describe('ccsss', () => {
                     .then(done, done);
             });
     });
+
+    it('should reject a bad request and give an example of a valid one', function (done) {
+        request(ccsssAppUrl)
+            .post('/generation/request')
+            .send({
+                bad: 'request'
+            })
+            .expect(400)
+            .expect('Content-Type', 'application/json')
+            .expect(res => {
+                expect(res.body.exampleOfValidRequest).to.be.an('object');
+            })
+            .end(done);
+    });
 });
