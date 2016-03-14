@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Critical-path CSS Service",
   "scripts": {
+    "start": "./bin/ccsss",
     "test": "./node_modules/.bin/mocha test"
   },
   "keywords": [
