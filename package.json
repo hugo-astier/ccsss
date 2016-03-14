@@ -16,8 +16,20 @@
     "type": "git",
     "url": "https://github.com/ndemengel/ccsss.git"
   },
+  "bin": "./bin/ccsss",
   "dependencies": {
     "clean-css": "3.4.10",
-    "penthouse": "0.9.1"
+    "oust": "0.2.4",
+    "penthouse": "0.9.1",
+    "request": "2.69.0",
+    "tempfile": "1.1.1",
+    "uuid": "2.0.1"
+  },
+  "devDependencies": {
+    "chai": "3.5.0",
+    "getport": "0.1.0",
+    "mocha": "2.4.5",
+    "sinon": "1.17.3",
+    "supertest": "1.2.0"
   }
 }

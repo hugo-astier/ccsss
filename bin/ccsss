@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+'use strict';
+
+process.on('uncaughtException', err => {
+    console.error((new Date).toUTCString() + ' uncaughtException:', err.message);
+    console.error(err.stack);
+});
+
+const server = require('../lib/server');
+
+server.start(8888);
