@@ -1,8 +1,5 @@
 # CCSSS - Critical-path CSS Service
 
-_Work in progress..._
-
-
 ## What
 
 Yet another critical-path CSS tool. Don't know what it's for? Please refer to
@@ -45,4 +42,64 @@ website, but it can be part of your post-deployment tasks, though.
 
 ## Documentation
 
-_Let's code the tool first..._
+Start ccsss:
+
+    $ ccsss --port 1234
+
+
+The port may be omitted, ccsss will run on port 8888 by default.
+
+Post a critical-path CSS generation request:
+
+    $ curl -v -H "Content-Type: application/json" -X POST -d '{
+        "url": "http://mywebsite.org/some/page",
+        "dimensions": [{
+            "width": 1280,
+            "height": 800
+        }, {
+            "width": 320,
+            "height": 568
+        }],
+        "notificationUrl": "http://mywebsite.org/notification/critical-css-ready"
+    }' http://localhost:8888/generation/request
+
+ccsss will return you something like the following:
+
+      ...
+    < HTTP/1.1 202 Accepted
+    < Location: http://localhost:8888/generation/result/47edab4c-caa7-4dc9-987a-f04716ed009f
+      ...
+
+    {"generationId":"1103f981-8052-4d3a-b098-d8f6c3eede22","status":"pending"}
+
+The `Location` header tells you where the result will be available once the generation is over.
+The JSON response also gives you a generation ID so you can later on associate notifications with
+the requests you made.
+
+Assuming you do have a endpoint at http://mywebsite.org/notification/critical-css-ready,
+you will receive a notification like the following one once the result is available:
+
+    {
+        "generationId": "1103f981-8052-4d3a-b098-d8f6c3eede22",
+        "status": "success",
+        "resultLocation": "http://localhost:8888/generation/result/47edab4c-caa7-4dc9-987a-f04716ed009f"
+    }
+
+You can then get you result. Note that having a `notificationUrl` is optional and that
+you can also blindly poll the given result URL from the beginning.
+
+    $ curl -v http://localhost:8888/generation/result/47edab4c-caa7-4dc9-987a-f04716ed009f
+      ... 
+    < HTTP/1.1 200 OK
+    < Content-Type: text/css
+      ...
+
+    #myElement,.my-class{position:relative}code,h1,h2,h3{word-wrap:break-word} /* ... */
+
+Finally, please note that once a result has been consumed, it is forgotten by the server:
+
+    $ curl -v http://localhost:8888/generation/result/47edab4c-caa7-4dc9-987a-f04716ed009f
+      ... 
+    < HTTP/1.1 404 Not Found
+      ...
+    Not found
