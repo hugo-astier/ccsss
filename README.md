@@ -42,10 +42,13 @@ website, but it can be part of your post-deployment tasks, though.
 
 ## Documentation
 
+Install ccsss (globally in this example):
+
+    $ sudo npm install --global --production
+
 Start ccsss:
 
     $ ccsss --port 1234
-
 
 The port may be omitted, ccsss will run on port 8888 by default.
 
@@ -103,3 +106,8 @@ Finally, please note that once a result has been consumed, it is forgotten by th
     < HTTP/1.1 404 Not Found
       ...
     Not found
+
+
+## Example: integration within a webapp
+
+_Yet to be written_
