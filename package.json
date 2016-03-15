@@ -15,7 +15,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ndemengel/ccsss.git"
+    "url": "https://github.com/Hopwork/ccsss.git"
   },
   "bin": "./bin/ccsss",
   "dependencies": {
