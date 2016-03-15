@@ -5,7 +5,6 @@ const http = require('http');
 const expect = require('chai').expect;
 const getPort = require('getport');
 const request = require('supertest');
-const sinon = require('sinon');
 
 const ccsss = require('../lib/server');
 
