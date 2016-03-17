@@ -25,7 +25,7 @@ describe('ccsss', () => {
     function fakeAppRequestHandler(req, response) {
         if (req.method === 'GET' && req.url === '/some-style.css') {
             response.writeHead(200, {'Content-Type': 'text/css'});
-            response.end('.blue { color: blue; } .red { color: red; }');
+            response.end('.blue { color: blue; } .red { color: red; } .thick { font-weight: bold; } .underlined { text-decoration: underline; }');
             return;
         }
 
@@ -36,7 +36,7 @@ describe('ccsss', () => {
                 '<link rel="stylesheet" href="some-style.css"' +
                 '</body>' +
                 '<body>' +
-                '<p class="blue">I\'m blue</p>' +
+                '<p class="blue thick underlined">I\'m a blue thick underlined paragraph</p>' +
                 '</body>' +
                 '</html>'
             );
@@ -103,6 +103,8 @@ describe('ccsss', () => {
                     width: 800,
                     height: 600
                 }],
+                ignore: ['.thick'],
+                ignoreRe: ['.*under.*'],
                 notificationUrl: fakeAppUrl + '/notification'
             })
             .expect(202)
