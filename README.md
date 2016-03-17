@@ -63,6 +63,8 @@ Post a critical-path CSS generation request:
             "width": 320,
             "height": 568
         }],
+        "ignore": ["font-face", ".some-class", "form"],
+        "ignoreRe": ["some.*regular.*expression"],
         "notificationUrl": "http://mywebsite.org/notification/critical-css-ready"
     }' http://localhost:8888/generation/request
 
