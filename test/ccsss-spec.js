@@ -25,7 +25,14 @@ describe('ccsss', () => {
     function fakeAppRequestHandler(req, response) {
         if (req.method === 'GET' && req.url === '/some-style.css') {
             response.writeHead(200, {'Content-Type': 'text/css'});
-            response.end('.blue { color: blue; } .red { color: red; } .thick { font-weight: bold; } .underlined { text-decoration: underline; }');
+            response.end(`
+                .blue { color: blue; }
+                .red { color: red; }
+                .thick { font-weight: bold; }
+                .underlined { text-decoration: underline; }
+                .small-margin { margin: 2px; }
+                .big-margin { padding: 50px; }
+            `);
             return;
         }
 
@@ -103,6 +110,8 @@ describe('ccsss', () => {
                     width: 800,
                     height: 600
                 }],
+                forceInclude: ['.small-margin'],
+                forceIncludeRe: ['.big.*gin'],
                 ignore: ['.thick'],
                 ignoreRe: ['.*under.*'],
                 notificationUrl: fakeAppUrl + '/notification'
@@ -131,7 +140,7 @@ describe('ccsss', () => {
                                 .get('/generation/result/' + generationId)
                                 .expect(200)
                                 .expect('Content-Type', 'text/css')
-                                .expect('.blue{color:#00f}')
+                                .expect('.blue{color:#00f}.small-margin{margin:2px}.big-margin{padding:50px}')
                                 .end(err => {
                                     if (err) reject(err);
                                     else resolve();

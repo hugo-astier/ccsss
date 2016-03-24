@@ -55,6 +55,7 @@ The port may be omitted, ccsss will run on port 8888 by default.
 Post a critical-path CSS generation request:
 
     $ curl -v -H "Content-Type: application/json" -X POST -d '{
+        // mandatory
         "url": "http://mywebsite.org/some/page",
         "dimensions": [{
             "width": 1280,
@@ -63,6 +64,9 @@ Post a critical-path CSS generation request:
             "width": 320,
             "height": 568
         }],
+        // optional
+        "forceInclude": ["#normallyHiddenId"],
+        "forceIncludeRe": [".important-.*"],
         "ignore": ["font-face", ".some-class", "form"],
         "ignoreRe": ["some.*regular.*expression"],
         "notificationUrl": "http://mywebsite.org/notification/critical-css-ready"
