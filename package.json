@@ -1,6 +1,6 @@
 {
   "name": "ccsss",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Critical-path CSS Service",
   "scripts": {
     "start": "./bin/ccsss",
