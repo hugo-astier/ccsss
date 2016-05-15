@@ -69,7 +69,11 @@ Post a critical-path CSS generation request:
         "forceIncludeRe": [".important-.*"],
         "ignore": ["font-face", ".some-class", "form"],
         "ignoreRe": ["some.*regular.*expression"],
-        "notificationUrl": "http://mywebsite.org/notification/critical-css-ready"
+        "notificationUrl": "http://mywebsite.org/notification/critical-css-ready",
+        "phantomJsOptions": { // see penthouse documentation and `phantomjs --help` for the list of all available options
+            "proxy": "http://proxy.company.com:8080",
+            "ssl-protocol": "SSLv3"
+        }
     }' http://localhost:8888/generation/request
 
 ccsss will return you something like the following:

@@ -114,7 +114,10 @@ describe('ccsss', () => {
                 forceIncludeRe: ['.big.*gin'],
                 ignore: ['.thick'],
                 ignoreRe: ['.*under.*'],
-                notificationUrl: fakeAppUrl + '/notification'
+                notificationUrl: fakeAppUrl + '/notification',
+                phantomJsOptions: {
+                    'ssl-protocol': 'SSLv2'
+                }
             })
             .expect(202)
             .expect('Content-Type', 'application/json')
