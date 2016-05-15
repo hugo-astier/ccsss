@@ -139,7 +139,7 @@ describe('ccsss', () => {
                             request(ccsssAppUrl)
                                 .get('/generation/result/' + generationId)
                                 .expect(200)
-                                .expect('Content-Type', 'text/css')
+                                .expect('Content-Type', 'text/css; charset=UTF-8')
                                 .expect('.blue{color:#00f}.small-margin{margin:2px}.big-margin{padding:50px}')
                                 .end(err => {
                                     if (err) reject(err);
