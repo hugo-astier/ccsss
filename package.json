@@ -22,7 +22,7 @@
     "clean-css": "3.4.10",
     "filter-css": "0.1.0",
     "oust": "0.2.4",
-    "penthouse": "0.9.2",
+    "penthouse": "0.9.7",
     "request": "2.69.0",
     "tempfile": "1.1.1",
     "uuid": "2.0.1"
