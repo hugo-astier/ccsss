@@ -167,4 +167,15 @@ describe('ccsss', () => {
             })
             .end(done);
     });
+
+    it('should respond 200 once launched', function(done) {
+        request(ccsssAppUrl)
+            .get('/health')
+            .expect(200)
+            .expect('Content-Type', 'application/json')
+            .expect(res => {
+                expect(res.body.status).to.equal("UP");
+            })
+            .end(done);
+    });
 });
