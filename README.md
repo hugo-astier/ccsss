@@ -19,7 +19,7 @@ Some existing solutions such as Addy Osmani's [critical](https://github.com/addy
 will require you to have a static version of your pages to run the tool during your build.  
 For dynamic websites, this won't do, obviously.
 
-At [Hopwork](https://www.hopwork.com), we ran a custom solution that reused our Selenium
+At [Malt](https://www.malt.com), we ran a custom solution that reused our Selenium
 test harness to dump the HTML code of our pages for `critical` to work on it, but it was
 still quite unpractical, especially since the page look depends on a lot of data that
 have to be reproduced for those test runs.
